@@ -1,0 +1,45 @@
+.historyContainer {
+    margin-top: 24px;
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.historyTags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.historyHeader {
+    display: flex;
+    align-items: center;
+}
+
+.historyIcon {
+    color: var(--text-color);
+    font-size: 20px;
+    opacity: 0.7;
+}
+
+.fadingOverlay {
+    position: absolute;
+    display: none;
+    left: calc(200px);
+    height: 40px;
+    width: min(200px, 10%);
+    background-color: brown;
+    /* background-image: linear-gradient(to right, transparent, transparent, var(--bg-color)) */
+}
+
+.divider {
+    width: 100%;
+    max-width: 600px;
+    margin: 24px auto 16px auto;
+    border: none;
+    border-top: 1.5px solid var(--input-border, #333);
+    opacity: 0.5;
+}

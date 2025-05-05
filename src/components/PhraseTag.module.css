@@ -1,0 +1,145 @@
+.historyTag {
+    display: flex;
+    max-width: 240px;
+    align-items: center;
+    gap: 8px;
+    padding: 0px 16px;
+    background-color: var(--input-bg);
+    border: 2px solid var(--input-border);
+    border-radius: 40px;
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.historyTag.active {
+    z-index: 10001;
+}
+
+.historyTag:hover {
+    background-color: var(--tag-bg);
+    border-color: var(--tag-bg);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.favoriteTag:hover {
+    background-color: var(--button-bg);
+    border-color:  var(--button-bg);
+    color: white;
+    transform: translateY(-1px);
+}
+
+.historyTag:active {
+    transform: scale(0.98);
+}
+
+.tagText {
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.searchIcon {
+    font-size: 12px;
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.ellipsisButton {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.ellipsisIcon {
+    font-size: 14px;
+    color: var(--text-color);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.dropdownContainer {
+    position: relative;
+}
+
+.dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--input-bg);
+    border: 2px solid var(--input-border);
+    border-radius: 8px;
+    padding: 8px;
+    margin-top: 4px;
+    min-width: 200px;
+    z-index: 10002;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dropdownItem {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    width: 100%;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.dropdownItem:hover {
+    background-color: var(--button-bg);
+    color: white;
+}
+
+.dropdownIcon {
+    font-size: 14px;
+    opacity: 0.7;
+    transition: all 0.2s ease;
+}
+
+.dropdownItem:hover .dropdownIcon {
+    opacity: 1;
+}
+
+.historyTag:hover .searchIcon,
+.historyTag:hover .ellipsisIcon {
+    color: white;
+    opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .historyTag {
+        padding: 10px 18px;
+    }
+
+    .tagText {
+        max-width: 150px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .historyTag {
+        font-size: 13px;
+        padding: 8px 16px;
+    }
+
+    .tagText {
+        max-width: 120px;
+    }
+} 
