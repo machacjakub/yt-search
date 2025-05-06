@@ -24,15 +24,21 @@ import UsersPhrases from './UsersPhrases'
 	function handleSearch() {
 		const searchInput = document.getElementById('searchInput') as HTMLInputElement;
 		if (!searchInput) return;
+		console.log('vii');
 		
 		const searchQuery = searchInput.value.trim();
-		
-		if (searchQuery) {
-			const encodedQuery = encodeURIComponent(searchQuery);
-			const currentHistory = JSON.parse(localStorage.getItem('yt-search-history')?? '');
-      		localStorage.setItem('yt-search-history', JSON.stringify([searchQuery,...currentHistory]));
-			window.location.href = `https://www.youtube.com/results?search_query=${encodedQuery}`;
+		console.log('duuu');
+
+		if(!searchQuery) {
+			return;
 		}
+		
+		const encodedQuery = encodeURIComponent(searchQuery);
+		const currentHistory = JSON.parse(localStorage.getItem('yt-search-history') ?? 'null');
+		localStorage.setItem('yt-search-history', JSON.stringify(currentHistory ? [searchQuery, ...currentHistory] : [searchQuery]));
+		window.location.href = `https://www.youtube.com/results?search_query=${encodedQuery}`;
+
+		console.log('nevidu');
 	}
 
 	// Add event listeners when the page loads

@@ -3,7 +3,7 @@
     max-width: 240px;
     align-items: center;
     gap: 8px;
-    padding: 0px 16px;
+    padding: 0px 8px 0px 16px;
     background-color: var(--input-bg);
     border: 2px solid var(--input-border);
     border-radius: 40px;
@@ -20,14 +20,14 @@
 }
 
 .historyTag:hover {
-    background-color: var(--tag-bg);
+    background-color: color-mix(in srgb, var(--tag-bg) 60%, transparent);
     border-color: var(--tag-bg);
     color: white;
     transform: translateY(-1px);
 }
 
 .favoriteTag:hover {
-    background-color: var(--button-bg);
+    background-color: color-mix(in srgb, var(--button-bg) 60%, transparent);
     border-color:  var(--button-bg);
     color: white;
     transform: translateY(-1px);

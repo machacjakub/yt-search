@@ -10,7 +10,7 @@ export default function Favorites({favorites, onFavoritesChange, onHistoryChange
   return (
     <div className={styles.historyContainer}>
         <div className={styles.historyHeader}>
-            <FaRegStar className={styles.historyIcon} />
+            <FaRegStar className={styles.favoriteIcon} />
         </div>
         <div className={styles.historyTags}>
         {favorites.map((item, index) => (

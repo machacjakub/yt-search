@@ -30,7 +30,7 @@ export default function UsersPhrases () {
             setHistory(storedHistory ? JSON.parse(storedHistory) : []);
         };
 
-    return <div>
+    return <div style={{width: '100%'}}>
 		<Favorites favorites={favorites} onHistoryChange={refreshHistory} onFavoritesChange={refreshFavorites} />
         {favorites.length > 0 && history.length > 0 && <div className={styles.divider} />}
         <History history={history} onHistoryChange={refreshHistory} onFavoritesChange={refreshFavorites} />
