@@ -67,6 +67,6 @@
 }
 
 .fullHistoryButton:hover {
-    color: white;
+    color: var(--text-color);
     transform: translateY(-1px);
 }
