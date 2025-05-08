@@ -6,6 +6,7 @@ const PhraseTag = ({ item, onHistoryChange, onFavoritesChange}) => {
     const [isFavorite, setIsFavorite] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
     const dropdownRef = useRef(null);
+    const buttonRef = useRef(null);
 
     useEffect(() => {
         const favorites = JSON.parse(localStorage.getItem('yt-search-favorites') || '[]');
@@ -14,7 +15,8 @@ const PhraseTag = ({ item, onHistoryChange, onFavoritesChange}) => {
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target) &&
+                !(buttonRef.current && buttonRef.current.contains(event.target))) {
                 setShowDropdown(false);
             }
         };
@@ -26,7 +28,7 @@ const PhraseTag = ({ item, onHistoryChange, onFavoritesChange}) => {
     const handleSearch = (query) => {
         const encodedQuery = encodeURIComponent(query);
         const currentHistory = JSON.parse(localStorage.getItem('yt-search-history')?? '');
-      	localStorage.setItem('yt-search-history', JSON.stringify([query,...currentHistory]));
+        localStorage.setItem('yt-search-history', JSON.stringify([query,...currentHistory]));
         window.location.href = `https://www.youtube.com/results?search_query=${encodedQuery}`;
     };
 
@@ -55,20 +57,31 @@ const PhraseTag = ({ item, onHistoryChange, onFavoritesChange}) => {
     };
 
     const buttonStyles = `${showDropdown
-    ? `${styles.historyTag} ${styles.active}`
-    : styles.historyTag}`
+        ? `${styles.historyTag} ${styles.active}`
+        : styles.historyTag}`
+
+    // Calculate the dropdown position based on the button's position
+    const getDropdownPosition = () => {
+        if (buttonRef.current) {
+            const rect = buttonRef.current.getBoundingClientRect();
+            return {
+                top: `${rect.bottom + window.scrollY}px`,
+                right: `${window.innerWidth - rect.right}px`
+            };
+        }
+        return {};
+    };
 
     return (
-        <button
-            className={
-                buttonStyles
-            }
-            onClick={() => handleSearch(item)}
-        >
-            <FaSearch className={styles.searchIcon} />
-            <span className={styles.tagText}>{item}</span>
-            <div className={styles.dropdownContainer} ref={dropdownRef}>
-                <button 
+        <>
+            <button
+                ref={buttonRef}
+                className={buttonStyles}
+                onClick={() => handleSearch(item)}
+            >
+                <FaSearch className={styles.searchIcon} />
+                <span className={styles.tagText}>{item}</span>
+                <button
                     className={styles.ellipsisButton}
                     onClick={(e) => {
                         e.stopPropagation();
@@ -77,9 +90,15 @@ const PhraseTag = ({ item, onHistoryChange, onFavoritesChange}) => {
                 >
                     <FaEllipsisH className={styles.ellipsisIcon} />
                 </button>
-                {showDropdown && (
+            </button>
+            {showDropdown && (
+                <div
+                    ref={dropdownRef}
+                    className={styles.dropdownPortal}
+                    style={getDropdownPosition()}
+                >
                     <div className={styles.dropdown}>
-                        <button 
+                        <button
                             className={styles.dropdownItem}
                             onClick={toggleFavorite}
                         >
@@ -95,7 +114,7 @@ const PhraseTag = ({ item, onHistoryChange, onFavoritesChange}) => {
                                 </>
                             )}
                         </button>
-                        <button 
+                        <button
                             className={styles.dropdownItem}
                             onClick={removeFromHistory}
                         >
@@ -103,9 +122,9 @@ const PhraseTag = ({ item, onHistoryChange, onFavoritesChange}) => {
                             Remove from history
                         </button>
                     </div>
-                )}
-            </div>
-        </button>
+                </div>
+            )}
+        </>
     );
 };
 

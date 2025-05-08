@@ -21,7 +21,7 @@
 }
 
 .historyTag.active {
-    z-index: 10001 !important;
+    z-index: 1000 !important;
 }
 
 .historyTag:hover {
@@ -65,29 +65,23 @@
     transition: all 0.3s ease;
 }
 
-.dropdownContainer {
-    position: relative;
+/* New portal element that gets positioned absolutely in the viewport */
+.dropdownPortal {
+    position: fixed;
+    z-index: 10000;
 }
 
+/* Dropdown content inside the portal */
 .dropdown {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: var(--dropdown-bg);
-    backdrop-filter: blur(30px);
-    -webkit-backdrop-filter: blur(12px);
+    position: relative;
+    background-color: var(--input-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 8px;
     padding: 8px;
     margin-top: 4px;
     min-width: 200px;
-    z-index: 1000 !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-
-    /* Force hardware acceleration */
-    transform: translateZ(0);
-
-    /* Add will-change to optimize rendering */
-    will-change: backdrop-filter;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 .dropdownItem {
@@ -106,7 +100,8 @@
 }
 
 .dropdownItem:hover {
-    background-color: var(--button-bg);
+    background-color: var(--bg-color);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 }
 
 .dropdownIcon {
@@ -143,4 +138,4 @@
     .tagText {
         max-width: 120px;
     }
-} 
+}

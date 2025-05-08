@@ -49,7 +49,7 @@
     max-width: 600px;
     margin: 24px auto 16px auto;
     border: none;
-    border-top: 1.5px solid var(--input-border, #333);
+    border-top: 1px solid var(--input-border);
     opacity: 0.5;
 }
 
