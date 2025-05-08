@@ -19,47 +19,6 @@ import UsersPhrases from './UsersPhrases'
 		<UsersPhrases client:load />
 	</div>
 </div>
-
-<script>
-	function handleSearch() {
-		const searchInput = document.getElementById('searchInput') as HTMLInputElement;
-		if (!searchInput) return;
-		console.log('vii');
-		
-		const searchQuery = searchInput.value.trim();
-		console.log('duuu');
-
-		if(!searchQuery) {
-			return;
-		}
-		
-		const encodedQuery = encodeURIComponent(searchQuery);
-		const currentHistory = JSON.parse(localStorage.getItem('yt-search-history') ?? 'null');
-		localStorage.setItem('yt-search-history', JSON.stringify(currentHistory ? [searchQuery, ...currentHistory] : [searchQuery]));
-		window.location.href = `https://www.youtube.com/results?search_query=${encodedQuery}`;
-
-		console.log('nevidu');
-	}
-
-	// Add event listeners when the page loads
-	document.addEventListener('DOMContentLoaded', () => {
-		const input = document.getElementById('searchInput') as HTMLInputElement;
-		const button = document.getElementById('searchButton');
-		
-		if (input) {
-			input.addEventListener('keypress', function(e) {
-				if (e.key === 'Enter') {
-					handleSearch();
-				}
-			});
-		}
-		
-		if (button) {
-			button.addEventListener('click', handleSearch);
-		}
-	});
-</script>
-
 <style>
 	.container {
 		display: flex;
@@ -77,12 +36,13 @@ import UsersPhrases from './UsersPhrases'
 		max-width: 600px;
 		width: 100%;
 		padding: 0 20px;
+		z-index: 200;
 	}
 
 	.text-content {
 		display: flex;
 		flex-direction: column;
-		gap: 0px;
+		gap: 0;
 	}
 
 	.heading {
@@ -109,13 +69,18 @@ import UsersPhrases from './UsersPhrases'
 	}
 
 	.styled-input {
-		padding: 12px 20px;
-		font-size: 16px;
-		border: 2px solid var(--input-border);
-		border-radius: 40px;
-		width: 300px;
-		transition: all 0.3s ease;
-		background-color: var(--input-bg);
+		border: none;
+		border-radius: 1rem;
+		width: 100%;
+		max-width: 400px;
+		padding: 1rem 1.25rem;
+		font-size: 1rem;
+		background: var(--input-bg);
+		backdrop-filter: blur(12px);
+		-webkit-backdrop-filter: blur(12px);
+		box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1), 0 0 10px rgba(255, 0, 0, 0.05);
+		outline: none;
+		transition: box-shadow 0.3s ease;
 		color: var(--text-color);
 	}
 
@@ -130,15 +95,18 @@ import UsersPhrases from './UsersPhrases'
 	}
 
 	.search-button {
-		padding: 12px 24px;
-		font-size: 16px;
+		font-size: 1rem;
 		background-color: var(--button-bg);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+		box-shadow: 0 8px 24px rgba(255, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
 		color: white;
+		padding: 1rem 1.5rem;
 		border: none;
-		border-radius: 40px;
+		border-radius: 1rem;
 		cursor: pointer;
-		transition: all 0.3s ease;
-		font-weight: 500;
+		font-weight: 400;
+		transition: background 0.3s ease, box-shadow 0.3s ease;
 	}
 
 	.search-button:hover {
@@ -187,3 +155,43 @@ import UsersPhrases from './UsersPhrases'
 		}
 	}
 </style>
+<script>
+	function handleSearch() {
+		const searchInput = document.getElementById('searchInput') as HTMLInputElement;
+		if (!searchInput) return;
+		console.log('vii');
+
+		const searchQuery = searchInput.value.trim();
+		console.log('duuu');
+
+		if(!searchQuery) {
+			return;
+		}
+
+		const encodedQuery = encodeURIComponent(searchQuery);
+		const currentHistory = JSON.parse(localStorage.getItem('yt-search-history') ?? 'null');
+		localStorage.setItem('yt-search-history', JSON.stringify(currentHistory ? [searchQuery, ...currentHistory] : [searchQuery]));
+		window.location.href = `https://www.youtube.com/results?search_query=${encodedQuery}`;
+
+		console.log('nevidu');
+	}
+
+	// Add event listeners when the page loads
+	document.addEventListener('DOMContentLoaded', () => {
+		const input = document.getElementById('searchInput') as HTMLInputElement;
+		const button = document.getElementById('searchButton');
+
+		if (input) {
+			input.addEventListener('keypress', function(e) {
+				if (e.key === 'Enter') {
+					handleSearch();
+				}
+			});
+		}
+
+		if (button) {
+			button.addEventListener('click', handleSearch);
+		}
+	});
+</script>
+

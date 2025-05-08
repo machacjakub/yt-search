@@ -14,7 +14,7 @@ export default function Favorites({favorites, onFavoritesChange, onHistoryChange
         </div>
         <div className={styles.historyTags}>
         {favorites.map((item, index) => (
-          <PhraseTag color={'yellow'} key={index} item={item} onHistoryChange={onHistoryChange} onFavoritesChange={onFavoritesChange} />
+          <PhraseTag key={index} item={item} onHistoryChange={onHistoryChange} onFavoritesChange={onFavoritesChange} />
         ))}
         </div>
     </div>

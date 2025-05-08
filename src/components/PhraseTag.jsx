@@ -2,7 +2,7 @@ import { FaSearch, FaRegStar, FaStar, FaEllipsisH, FaTrash } from 'react-icons/f
 import styles from './PhraseTag.module.css';
 import { useState, useEffect, useRef } from 'react';
 
-const PhraseTag = ({ item, onHistoryChange, onFavoritesChange, color }) => {
+const PhraseTag = ({ item, onHistoryChange, onFavoritesChange}) => {
     const [isFavorite, setIsFavorite] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
     const dropdownRef = useRef(null);
@@ -56,7 +56,7 @@ const PhraseTag = ({ item, onHistoryChange, onFavoritesChange, color }) => {
 
     const buttonStyles = `${showDropdown
     ? `${styles.historyTag} ${styles.active}`
-    : styles.historyTag} ${color === 'yellow' && styles.favoriteTag}`
+    : styles.historyTag}`
 
     return (
         <button
@@ -65,8 +65,8 @@ const PhraseTag = ({ item, onHistoryChange, onFavoritesChange, color }) => {
             }
             onClick={() => handleSearch(item)}
         >
-            <span className={styles.tagText}>{item}</span>
             <FaSearch className={styles.searchIcon} />
+            <span className={styles.tagText}>{item}</span>
             <div className={styles.dropdownContainer} ref={dropdownRef}>
                 <button 
                     className={styles.ellipsisButton}
