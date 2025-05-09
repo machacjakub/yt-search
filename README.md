@@ -1,48 +1,58 @@
-# Astro Starter Kit: Basics
+# YT Search - Distraction-Free YouTube Search
 
-```sh
-yarn create astro@latest -- --template basics
-```
+A minimalist web application that allows you to search YouTube without being distracted by recommendations or other attention-grabbing elements.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Features
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- **Clean Interface**: Minimal design focused solely on search
+- **Search History**: Automatically saves your recent searches
+- **Favorites**: Save frequent searches for easy access
+- **Dark Mode Support**: Automatically adapts to your system preferences
+- **Zero Tracking**: No analytics or tracking - just search
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## Technology Stack
 
-## 🚀 Project Structure
+- **Astro**: Fast, lightweight web framework
+- **React**: Interactive UI components
+- **CSS Modules**: Scoped styling
+- **LocalStorage API**: Client-side data persistence
 
-Inside of your Astro project, you'll see the following folders and files:
+## Getting Started
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+### Prerequisites
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+- Node.js (v16 or later)
+- Yarn or npm
 
-## 🧞 Commands
+### Installation
 
-All commands are run from the root of the project, from a terminal:
+1. Install dependencies:
+   ```bash
+   yarn install
+   ```
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `yarn install`             | Installs dependencies                            |
-| `yarn dev`             | Starts local dev server at `localhost:4321`      |
-| `yarn build`           | Build your production site to `./dist/`          |
-| `yarn preview`         | Preview your build locally, before deploying     |
-| `yarn astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `yarn astro -- --help` | Get help using the Astro CLI                     |
+2. Start the development server:
+   ```bash
+   yarn dev
+   ```
 
-## 👀 Want to learn more?
+3. Open your browser and navigate to `http://localhost:4321`
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## Commands
+
+| Command              | Action                                      |
+| :------------------- | :------------------------------------------ |
+| `yarn install`       | Installs dependencies                       |
+| `yarn dev`           | Starts local dev server at `localhost:4321` |
+| `yarn build`         | Build your production site to `./dist/`     |
+| `yarn preview`       | Preview your build locally                  |
+
+## Privacy
+
+- All data is stored locally in your browser via localStorage
+- No data is sent to any server (except the search query to YouTube)
+- No cookies or tracking scripts are used
+
+## License
+
+This project is licensed under the MIT License.
