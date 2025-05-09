@@ -2,33 +2,19 @@ import History from "./History"
 import Favorites from "./Favorites"
 import { useState, useEffect } from "react";
 import styles from "./History.module.css";
+import {getFavorites, getHistory} from "../utils/localStorageUtils.js";
 
 export default function UsersPhrases () {
     const [history, setHistory] = useState([]);
     const [favorites, setFavorites] = useState([]);
 
+    const refreshFavorites = () => setFavorites(getFavorites());
+    const refreshHistory = () => setHistory(getHistory());
+
     useEffect(() => {
-        const storedHistory = localStorage.getItem('yt-search-history');
-        const storedFavorites = localStorage.getItem('yt-search-favorites');
-        if (storedHistory) {
-          setHistory(JSON.parse(storedHistory));
-        }
-        if (storedFavorites) {
-          setFavorites(JSON.parse(storedFavorites));
-        }
+        refreshHistory()
+        refreshFavorites()
       }, []);
-
-        // Refresh history from localStorage
-        const refreshFavorites = () => {
-            const storedFavorites= localStorage.getItem('yt-search-favorites');
-            setFavorites(storedFavorites ? JSON.parse(storedFavorites) : []);
-        };
-
-        // Refresh history from localStorage
-        const refreshHistory = () => {
-            const storedHistory = localStorage.getItem('yt-search-history');
-            setHistory(storedHistory ? JSON.parse(storedHistory) : []);
-        };
 
     return <div style={{width: '100%'}}>
 		<Favorites favorites={favorites} onHistoryChange={refreshHistory} onFavoritesChange={refreshFavorites} />

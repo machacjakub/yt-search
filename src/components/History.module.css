@@ -1,5 +1,10 @@
+.sectionContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
 .historyContainer {
-    margin-top: 24px;
     width: 100%;
     max-width: 600px;
     display: flex;
@@ -14,16 +19,12 @@
     gap: 8px;
 }
 
-.historyHeader {
-    display: flex;
-    align-items: center;
-}
-
-.historyIcon {
+.historyHeading {
     color: var(--text-color);
-    font-size: 20px;
+    font-size: 1rem;
+    font-weight: lighter;
+    margin: 0;
     opacity: 0.6;
-    stroke-width: 1px;
 }
 
 .favoriteIcon {
@@ -47,7 +48,7 @@
 .divider {
     width: 100%;
     max-width: 600px;
-    margin: 24px auto 16px auto;
+    margin: 24px auto;
     border: none;
     border-top: 1px solid var(--input-border);
     opacity: 0.5;

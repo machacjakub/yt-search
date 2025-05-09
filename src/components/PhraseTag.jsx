@@ -1,17 +1,22 @@
 import { FaSearch, FaRegStar, FaStar, FaEllipsisH, FaTrash } from 'react-icons/fa';
 import styles from './PhraseTag.module.css';
 import { useState, useEffect, useRef } from 'react';
+import {
+    addToFavorites,
+    getFavorites,
+    removeFromFavorites, removeFromHistory
+} from "../utils/localStorageUtils.js";
+import {handleSearch} from "../utils/search.js";
 
-const PhraseTag = ({ item, onHistoryChange, onFavoritesChange}) => {
+const PhraseTag = ({ phrase, onHistoryChange, onFavoritesChange}) => {
     const [isFavorite, setIsFavorite] = useState(false);
     const [showDropdown, setShowDropdown] = useState(false);
     const dropdownRef = useRef(null);
     const buttonRef = useRef(null);
 
     useEffect(() => {
-        const favorites = JSON.parse(localStorage.getItem('yt-search-favorites') || '[]');
-        setIsFavorite(favorites.includes(item));
-    }, [item]);
+        setIsFavorite(getFavorites().includes(phrase));
+    }, [phrase]);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -25,33 +30,21 @@ const PhraseTag = ({ item, onHistoryChange, onFavoritesChange}) => {
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
 
-    const handleSearch = (query) => {
-        const encodedQuery = encodeURIComponent(query);
-        const currentHistory = JSON.parse(localStorage.getItem('yt-search-history')?? '');
-        localStorage.setItem('yt-search-history', JSON.stringify([query,...currentHistory]));
-        window.location.href = `https://www.youtube.com/results?search_query=${encodedQuery}`;
-    };
-
     const toggleFavorite = (e) => {
         e.stopPropagation();
-        const favorites = JSON.parse(localStorage.getItem('yt-search-favorites') || '[]');
         if (isFavorite) {
-            const newFavorites = favorites.filter(fav => fav !== item);
-            localStorage.setItem('yt-search-favorites', JSON.stringify(newFavorites));
+            removeFromFavorites(phrase)
         } else {
-            favorites.push(item);
-            localStorage.setItem('yt-search-favorites', JSON.stringify(favorites));
+            addToFavorites(phrase)
         }
         setIsFavorite(!isFavorite);
         setShowDropdown(false);
         if (onFavoritesChange) onFavoritesChange();
     };
 
-    const removeFromHistory = (e) => {
+    const handleRemoveFromHistory = (e) => {
         e.stopPropagation();
-        const history = JSON.parse(localStorage.getItem('yt-search-history') || '[]');
-        const newHistory = history.filter(hist => hist !== item);
-        localStorage.setItem('yt-search-history', JSON.stringify(newHistory));
+        removeFromHistory(phrase);
         setShowDropdown(false);
         if (onHistoryChange) onHistoryChange();
     };
@@ -74,13 +67,13 @@ const PhraseTag = ({ item, onHistoryChange, onFavoritesChange}) => {
 
     return (
         <>
-            <button
+            <div
                 ref={buttonRef}
                 className={buttonStyles}
-                onClick={() => handleSearch(item)}
+                onClick={() => handleSearch(phrase)}
             >
                 <FaSearch className={styles.searchIcon} />
-                <span className={styles.tagText}>{item}</span>
+                <span className={styles.tagText}>{phrase}</span>
                 <button
                     className={styles.ellipsisButton}
                     onClick={(e) => {
@@ -90,7 +83,7 @@ const PhraseTag = ({ item, onHistoryChange, onFavoritesChange}) => {
                 >
                     <FaEllipsisH className={styles.ellipsisIcon} />
                 </button>
-            </button>
+            </div>
             {showDropdown && (
                 <div
                     ref={dropdownRef}
@@ -116,7 +109,7 @@ const PhraseTag = ({ item, onHistoryChange, onFavoritesChange}) => {
                         </button>
                         <button
                             className={styles.dropdownItem}
-                            onClick={removeFromHistory}
+                            onClick={handleRemoveFromHistory}
                         >
                             <FaTrash className={styles.dropdownIcon} />
                             Remove from history

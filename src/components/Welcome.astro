@@ -11,7 +11,7 @@ import UsersPhrases from './UsersPhrases'
 			<input 
 				type="text" 
 				class="styled-input" 
-				placeholder="Enter your text here..."
+				placeholder="Search here..."
 				id="searchInput"
 			/>
 			<button class="search-button" id="searchButton">Search</button>
@@ -51,7 +51,6 @@ import UsersPhrases from './UsersPhrases'
 		font-weight: 700;
 		margin: 0;
 		text-align: left;
-		font-family: 'Roboto', sans-serif;
 	}
 
 	.description {
@@ -59,7 +58,6 @@ import UsersPhrases from './UsersPhrases'
 		font-size: 14px;
 		letter-spacing: 0.8px;
 		margin: 0;
-		font-family: 'Roboto', sans-serif;
 	}
 
 	.search-container {
@@ -156,24 +154,19 @@ import UsersPhrases from './UsersPhrases'
 	}
 </style>
 <script>
-	function handleSearch() {
+	import { handleSearch } from "../utils/search";
+
+	function handleSubmit() {
 		const searchInput = document.getElementById('searchInput') as HTMLInputElement;
 		if (!searchInput) return;
-		console.log('vii');
+
 
 		const searchQuery = searchInput.value.trim();
-		console.log('duuu');
-
 		if(!searchQuery) {
 			return;
 		}
-
-		const encodedQuery = encodeURIComponent(searchQuery);
-		const currentHistory = JSON.parse(localStorage.getItem('yt-search-history') ?? 'null');
-		localStorage.setItem('yt-search-history', JSON.stringify(currentHistory ? [searchQuery, ...currentHistory] : [searchQuery]));
-		window.location.href = `https://www.youtube.com/results?search_query=${encodedQuery}`;
-
-		console.log('nevidu');
+		searchInput.value = '';
+		handleSearch(searchQuery)
 	}
 
 	// Add event listeners when the page loads
@@ -184,13 +177,13 @@ import UsersPhrases from './UsersPhrases'
 		if (input) {
 			input.addEventListener('keypress', function(e) {
 				if (e.key === 'Enter') {
-					handleSearch();
+					handleSubmit();
 				}
 			});
 		}
 
 		if (button) {
-			button.addEventListener('click', handleSearch);
+			button.addEventListener('click', handleSubmit);
 		}
 	});
 </script>
