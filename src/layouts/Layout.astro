@@ -1,21 +1,9 @@
+---
+import Head from "../components/Head.astro";
+---
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>YT Search</title>
-		<!-- Google tag (gtag.js) -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-3EWTBJJ23C"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-
-			gtag('config', 'G-3EWTBJJ23C');
-		</script>
-	</head>
+	<Head title="YouTube Search" description={'Search your favorite YouTube videos without distractions.'} />
 	<body>
 		<div class="background-container">
 			<div class="blurred-circle"></div>
