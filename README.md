@@ -1,7 +1,7 @@
 # YT Search - Distraction-Free YouTube Search
 
 A minimalist web application that allows you to search YouTube without being distracted by recommendations or other attention-grabbing elements.
-
+![app-dark-screenhot.png](public/app-dark-screenhot.png)
 ## Features
 
 - **Clean Interface**: Minimal design focused solely on search
