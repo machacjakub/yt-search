@@ -127,7 +127,7 @@ import Announcements from './annoucements/Announcements'
 		transform: scale(0.98);
 	}
 
-	@media screen and (max-width: 768px) {
+	@media screen and (max-width: 600px) {
 		.content {
 			padding: 0 16px;
 		}
@@ -142,7 +142,9 @@ import Announcements from './annoucements/Announcements'
 		}
 
 		.styled-input {
-			width: 80vw;
+			width: 100%;
+			padding: 14px 24px;
+			max-width: calc(100vw - 80px);
 		}
 
 		.search-button {
@@ -158,10 +160,6 @@ import Announcements from './annoucements/Announcements'
 
 		.description {
 			font-size: 13px;
-		}
-
-		.styled-input {
-			padding: 14px 20px;
 		}
 	}
 </style>
