@@ -1,6 +1,6 @@
 .announcementWindow {
     min-width: min(50vw, 500px);
-    max-height: 90vh;
+    max-height: calc(90vh - 50px);
     background: var(--input-bg);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(12px);
