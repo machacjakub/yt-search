@@ -120,21 +120,12 @@
 }
 
 @media screen and (max-width: 768px) {
-    .historyTag {
-        padding: 10px 18px;
-    }
-
     .tagText {
         max-width: 150px;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .historyTag {
-        font-size: 13px;
-        padding: 8px 16px;
-    }
-
     .tagText {
         max-width: 120px;
     }
