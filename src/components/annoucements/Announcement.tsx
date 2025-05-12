@@ -10,11 +10,13 @@ const Announcement = ({content, open, onClose, withContact, withAction}: { conte
             <div className={styles.topBar}><button className={styles.closeButton} onClick={onClose}><IoClose/></button></div>
                 <div className={styles.announcementContent}>
                     <div dangerouslySetInnerHTML={{ __html: content }}/>
-                    {withContact && <div className={styles.contactLinks}>Leave feedback here:
-                        <button onClick={() => window.open('https://discord.gg/X7WMT6rR', '_blank')}  className={styles.linkButton}><FaDiscord/></button>
-                        <button onClick={() => window.open('https://www.reddit.com/r/ytsearch/', '_blank')}  className={styles.linkButton}><FaReddit/></button>
-                        <button onClick={() => window.open('https://github.com/machacjakub/yt-search', '_blank')} className={styles.linkButton}><FaGithub/></button>
-                        <button onClick={() => window.open('mailto:info@ytsearch.com')} className={styles.linkButton}><IoMail/></button>
+                    {withContact && <div className={styles.contact}><span className={styles.feedback}>Leave feedback here:</span>
+                        <div  className={styles.contactLinks}>
+                            <button onClick={() => window.open('https://discord.gg/X7WMT6rR', '_blank')}  className={styles.linkButton}><FaDiscord/></button>
+                            <button onClick={() => window.open('https://www.reddit.com/r/ytsearch/', '_blank')}  className={styles.linkButton}><FaReddit/></button>
+                            <button onClick={() => window.open('https://github.com/machacjakub/yt-search', '_blank')} className={styles.linkButton}><FaGithub/></button>
+                            <button onClick={() => window.open('mailto:info@ytsearch.com')} className={styles.linkButton}><IoMail/></button>
+                        </div>
                     </div>}
                     {withContact && <div className={styles.email}>info@ytsearch.com</div>}
                     {withAction && <div className={styles.contactLinks}><button onClick={onClose} className={styles.actionButton}>Let's try it!</button></div>}
