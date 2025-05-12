@@ -1,0 +1,12 @@
+.infoButton {
+    background-color: transparent;
+    border: none;
+    font-size: 2rem;
+    color: var(--text-color);
+    opacity: 0.7;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.infoButton:hover {
+    opacity: 1;
+}
