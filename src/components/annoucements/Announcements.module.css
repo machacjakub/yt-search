@@ -1,0 +1,100 @@
+.announcementWindow {
+    min-width: min(50vw, 500px);
+    background: var(--input-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px;
+    box-shadow: var(--input-box-shadow);
+    z-index: 2500;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-color);
+}
+
+.announcementContent {
+    padding: 20px 30px 30px 30px;
+}
+
+.topBar {
+    width: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.closeButton {
+    background-color: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 20px;
+    padding: 2px;
+    margin: 4px 4px 0 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contactLinks {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 100;
+}
+
+.linkButton {
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.8;
+}
+
+.linkButton:hover {
+    transform: translateY(-1px);
+    opacity: 1;
+}
+
+.actionButton {
+    font-size: 1.2rem;
+    background-color: var(--button-bg);
+    box-shadow: var(--button-box-shadow);
+    color: white;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 1rem;
+    cursor: pointer;
+    font-weight: 400;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 16px;
+}
+
+.actionButton:hover {
+    background-color: var(--button-hover);
+}
+
+.email {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    font-weight: 100;
+    opacity: 0.8;
+}
+
+h1,h2,h3,h4,h5,h6,p {
+    margin: 0;
+}
+
+p {
+    font-weight: 100;
+}

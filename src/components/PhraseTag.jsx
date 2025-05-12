@@ -5,7 +5,7 @@ import {
     addToFavorites,
     getFavorites,
     removeFromFavorites, removeFromHistory
-} from "../utils/localStorageUtils.js";
+} from "../utils/localStorageUtils.ts";
 import {handleSearch} from "../utils/search.js";
 
 const PhraseTag = ({ phrase, onHistoryChange, onFavoritesChange}) => {

@@ -2,7 +2,7 @@ import History from "./History"
 import Favorites from "./Favorites"
 import { useState, useEffect } from "react";
 import styles from "./History.module.css";
-import {getFavorites, getHistory} from "../utils/localStorageUtils.js";
+import {getFavorites, getHistory} from "../utils/localStorageUtils.ts";
 
 export default function UsersPhrases () {
     const [history, setHistory] = useState([]);

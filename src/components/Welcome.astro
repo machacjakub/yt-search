@@ -1,7 +1,10 @@
 ---
+import { Info } from './Info';
 import UsersPhrases from './UsersPhrases'
+import Announcements from './annoucements/Announcements'
 ---
 <div class="container">
+	<div class="top-bar"><img src="./favicon.svg" width="50px"> <Info client:load/></div>
 	<div class="content">
 		<div class="text-content">
 			<h1 class="heading">YouTube Search</h1>
@@ -17,6 +20,7 @@ import UsersPhrases from './UsersPhrases'
 			<button class="search-button" id="searchButton">Search</button>
 		</div>
 		<UsersPhrases client:load />
+		<Announcements client:load />
 	</div>
 </div>
 <style>
@@ -26,6 +30,16 @@ import UsersPhrases from './UsersPhrases'
 		align-items: center;
 		min-height: 100vh;
 		background-color: var(--bg-color);
+	}
+
+	.top-bar {
+		position: fixed;
+		top: 0;
+		width: calc(100vw - 32px);
+		padding: 16px;
+		display: flex;
+		justify-content: space-between;
+		z-index: 2000;
 	}
 
 	.content {
@@ -95,8 +109,6 @@ import UsersPhrases from './UsersPhrases'
 	.search-button {
 		font-size: 1rem;
 		background-color: var(--button-bg);
-		backdrop-filter: blur(8px);
-		-webkit-backdrop-filter: blur(8px);
 		box-shadow: var(--button-box-shadow);
 		color: white;
 		padding: 1rem 1.5rem;
