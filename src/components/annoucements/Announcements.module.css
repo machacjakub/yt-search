@@ -15,6 +15,8 @@
 
 .announcementContent {
     padding: 20px 30px 30px 30px;
+    width: max-content;
+    max-width: calc(90vw - 60px);
 }
 
 .topBar {
@@ -36,13 +38,24 @@
     justify-content: center;
 }
 
-.contactLinks {
+.contact {
     display: flex;
-    gap: 16px;
+    gap: 8px;
     margin-top: 16px;
     align-items: center;
     font-size: 1.2rem;
     font-weight: 100;
+    flex-wrap: wrap;
+}
+
+.feedback {
+    margin-right: 8px;
+}
+
+.contactLinks {
+    display: flex;
+    gap: 16px;
+    align-items: center;
 }
 
 .linkButton {
@@ -82,7 +95,7 @@
 }
 
 .email {
-    margin-top: 8px;
+    margin-top: 16px;
     display: flex;
     align-items: center;
     gap: 8px;
