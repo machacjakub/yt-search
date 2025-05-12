@@ -1,4 +1,4 @@
-import {addToHistory} from "./localStorageUtils.js";
+import {addToHistory} from "./localStorageUtils.ts";
 
 export const handleSearch = (query) => {
     addToHistory(query)
